@@ -1,10 +1,11 @@
 <template>
     <div class="app-main-layout">
     
-    <Navbar />
-    <Sidebar />
+    <Navbar @click="isOpened = !isOpened"/>
+    <Sidebar :value="isOpened"/>
 
-    <main class="app-content">
+    <main class="app-content"
+        :class="{'full': !isOpened}">
       <div class="app-page">    
           <router-view />
       </div>
@@ -26,6 +27,11 @@ export default {
   name: "MainLayout",
   components: {
     Navbar, Sidebar
+  },
+  data () {
+    return {
+        isOpened: true
+    }
   }
 };
 </script>
