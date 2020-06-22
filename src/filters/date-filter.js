@@ -1,7 +1,5 @@
 export default function dateFilter(value, format = "date") {
-    const options = {
-
-    };
+    const options = {};
     if (format.includes('date')) {
         options.day = '2-digit';
         options.month = 'long';
