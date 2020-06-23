@@ -1,21 +1,40 @@
 import Vue from "vue";
-import Vuelidate from 'vuelidate';
+import Vuelidate from "vuelidate";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
-import dateFilter from './filters/date-filter';
-import messagePlugin from './utils/message.plugin';
+import dateFilter from "./filters/date-filter";
+import messagePlugin from "./utils/message.plugin";
 import "./registerServiceWorker";
-import 'materialize-css/dist/js/materialize.min';
+import "materialize-css/dist/js/materialize.min";
+
+import firebase from "../../node_modules/firebase/app";
+import "../../node_modules/firebase/auth";
+import "../../node_modules/firebase/database";
 
 Vue.config.productionTip = false;
 
 Vue.use(messagePlugin);
 Vue.use(Vuelidate);
-Vue.filter('date', dateFilter)
+Vue.filter("date", dateFilter);
 
-new Vue({
-    router,
-    store,
-    render: h => h(App)
-}).$mount("#app");
+firebase.initializeApp({
+    apiKey: "AIzaSyCS13msqIhWYb5yjj1Bh8-tLzo-Cy3VMpg",
+    authDomain: "vue-crm-d352f.firebaseapp.com",
+    databaseURL: "https://vue-crm-d352f.firebaseio.com",
+    projectId: "vue-crm-d352f",
+    storageBucket: "vue-crm-d352f.appspot.com",
+    messagingSenderId: "448182710647",
+});
+
+let app;
+
+firebase.auth().onAuthStateChanged(() => {
+    if (!app) {
+        app = new Vue({
+            router,
+            store,
+            render: (h) => h(App),
+        }).$mount("#app");
+    }
+});
