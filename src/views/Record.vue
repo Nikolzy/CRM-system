@@ -126,6 +126,7 @@ export default {
         try {
           await this.$store.dispatch('createRecord', {
             categoryId: this.category,
+            type: this.type,
             amount: this.amount,
             description: this.description,
             date: new Date().toJSON()
