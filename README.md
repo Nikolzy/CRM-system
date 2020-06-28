@@ -1,4 +1,14 @@
-# crm-frontend
+# CRM System
+Technologies:
+    - JS framework:
+        Vue.js (Vue CLI, Vuex, Vue Router, Vue custom filters, Vue directive)
+    - CSS framework: 
+        Materialize
+    - Backend: 
+        Firebase (auth, database)
+    - APIs: 
+        [Fixer](https://fixer.io/) (for currency)
+
 
 ## Project setup
 ```

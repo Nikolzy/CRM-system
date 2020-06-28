@@ -2,9 +2,8 @@ import firebase from "../../../node_modules/firebase/app";
 
 export default {
     actions: {
-        async login({ dispatch, commit }, { email, password }) {
+        async login({ commit }, { email, password }) {
             try {
-                console.log(dispatch, commit);
                 await firebase.auth().signInWithEmailAndPassword(email, password);
             } catch (e) {
                 commit('setError', e)
