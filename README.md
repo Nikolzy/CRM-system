@@ -8,7 +8,7 @@
   - [Firebase](https://firebase.google.com/) (auth, database)
 - **APIs**: 
   - [Fixer](https://fixer.io/) (for currency)
-- **Pagiantion**:
+- **Pagination**:
   - [vuejs-paginate](https://www.npmjs.com/package/vuejs-paginate)
   - [Lodash](https://lodash.com/)
 
