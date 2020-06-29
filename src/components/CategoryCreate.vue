@@ -51,6 +51,7 @@ import {
   required,
   minValue,
 } from "../../node_modules/vuelidate/lib/validators";
+import localizeFilter from '../filters/localize-filter';
 
 export default {
   data: () => ({
@@ -85,7 +86,7 @@ export default {
         this.$v.$reset();
 
         this.$emit('created', category);
-        this.$message('Категория была создана');
+        this.$message(`${localizeFilter('category_create')}`);
       } catch (e) {console.log(e);}
     }
   }

@@ -63,6 +63,7 @@ import {
   required,
   minValue,
 } from "../../node_modules/vuelidate/lib/validators";
+import localizeFilter from '../filters/localize-filter';
 
 export default {
   props: {
@@ -104,7 +105,7 @@ export default {
           limit: this.limit
         }
         await this.$store.dispatch('updateCategory', categoryData);
-        this.$message('Категория успешно обновлена');
+        this.$message(`${localizeFilter('category_update')}`);
         this.$emit('upadated', categoryData);
       } catch (e) {
         console.log(e);

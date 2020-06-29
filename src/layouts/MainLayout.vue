@@ -55,7 +55,7 @@ export default {
   },
   watch: {
     error(fbError) {
-      this.$error(messages[fbError.code] || "Что-то пошло не так");
+      this.$error(localizeFilter(messages[fbError.code]) || "Что-то пошло не так");
     }
   },
   async mounted() {

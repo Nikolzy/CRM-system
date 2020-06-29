@@ -7,9 +7,9 @@
     <Loader v-if="loading"/>
 
     <p class="center" v-else-if="!categories.length">
-      {{'empty_categoty' | localize}}
+      {{'empty_category' | localize}}
       <router-link to='/categories'>
-        {{'empty_category_add' | localize}}
+        {{'empty_record_add' | localize}}
       </router-link>
     </p>
 
@@ -93,9 +93,15 @@
 <script>
 import { required, minValue } from '../../node_modules/vuelidate/lib/validators';
 import { mapGetters } from 'vuex';
+import localizeFilter from '../filters/localize-filter';
 
 export default {
   name: 'Record',
+  metaInfo() {
+    return ({
+      title: this.$title('menu_Record')
+    })
+  },
   data: () => ({
     loading: true,
     categories: [],
@@ -139,14 +145,14 @@ export default {
             : this.info.bill - this.amount;
 
           await this.$store.dispatch('updateInfo', {bill});
-          this.$message('Запись успешно создана');
+          this.$message(`${localizeFilter('record_create')}`);
           this.$v.$reset();
           this.amount = 1;
           this.description = '';
         } catch (e) {console.log(e);}
         
       } else {
-        this.$message(`Недостаточно средств на счете (${this.amount - this.info.bill})`)
+        this.$message(`${localizeFilter('not_enough_money')} (${this.amount - this.info.bill})`)
       }
     }
   },
