@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import firebase from '../../../node_modules/firebase/app';
+import firebase from '../../node_modules/firebase/app';
 
 Vue.use(VueRouter);
 

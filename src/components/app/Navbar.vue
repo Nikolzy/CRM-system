@@ -23,13 +23,15 @@
           <ul id="dropdown" class="dropdown-content">
             <li>
               <router-link to="/profile" class="black-text">
-                <i class="material-icons">account_circle</i>Профиль
+                <i class="material-icons">account_circle</i>
+                {{'navbar_Profile_tab' | localize}}
               </router-link>
             </li>
             <li class="divider" tabindex="-1"></li>
             <li>
               <a to="/login" class="black-text" @click.prevent="logout">
-                <i class="material-icons">assignment_return</i>Выйти
+                <i class="material-icons">assignment_return</i>
+                 {{'navbar_Exit_tab' | localize}}
               </a>
             </li>
           </ul>

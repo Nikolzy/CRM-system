@@ -3,7 +3,7 @@
     <Loader v-if="loading" />
     <div class="app-main-layout" v-else>
       <Navbar @click="isOpened = !isOpened" />
-      <Sidebar :value="isOpened" />
+      <Sidebar :value="isOpened" :key="locale"/>
 
       <main class="app-content" :class="{ full: !isOpened }">
         <div class="app-page">
@@ -15,7 +15,7 @@
         <router-link
           class="btn-floating btn-large blue add-record-btn"
           to="/record"
-          v-tooltip="'Создать новую запись'"
+          v-tooltip="tooltipText"
         >
           <i class="large material-icons">add</i>
         </router-link>
@@ -28,6 +28,7 @@
 import Navbar from "../components/app/Navbar";
 import Sidebar from "../components/app/Sidebar";
 import messages from './../utils/messages';
+import localizeFilter from '../filters/localize-filter';
 
 export default {
   name: "MainLayout",
@@ -45,11 +46,17 @@ export default {
     error() {
       return this.$store.getters.error;
     },
+    locale() {
+      return this.$store.getters.info.locale;
+    },
+    tooltipText() {
+      return localizeFilter('create_tooltip_text');
+    }
   },
   watch: {
     error(fbError) {
       this.$error(messages[fbError.code] || "Что-то пошло не так");
-    },
+    }
   },
   async mounted() {
     if (!Object.keys(this.$store.getters.info).length) {

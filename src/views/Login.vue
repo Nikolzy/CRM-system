@@ -40,14 +40,14 @@
         <small
           class="helper-text invalid"
           v-if="$v.password.$dirty && !$v.password.required"
-          >Введите пароль</small
-        >
+          >Введите пароль
+        </small>
         <small
           class="helper-text invalid"
           v-else-if="$v.password.$dirty && !$v.password.minLength"
           >Пароль должен быть {{ $v.password.$params.minLength.min }} символов.
-          Сейчас он {{ password.length }} символов.</small
-        >
+          Сейчас он {{ password.length }} символов.
+        </small>
       </div>
     </div>
     <div class="card-action">

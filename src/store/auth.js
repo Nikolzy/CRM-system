@@ -1,4 +1,4 @@
-import firebase from "../../../node_modules/firebase/app";
+import firebase from "../../node_modules/firebase/app";
 
 export default {
     actions: {
